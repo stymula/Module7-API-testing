@@ -1,3 +1,7 @@
+.idea/
+Test_Configuration/
+Test_Data/
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
