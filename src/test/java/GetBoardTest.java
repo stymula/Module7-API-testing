@@ -10,39 +10,33 @@ import io.restassured.response.Response;
 
 public class GetBoardTest extends BaseTest {
 
-    @Test(description="To retrieve the details of Board")
-    public void get_Board_by_id() {
+    @Test(description="Get Trello Board")
+    public void get_board_by_id() {
 
-        AllureLogger.logToAllure("Starting the test to get Board");
-        String boardId = "65e999f9265427651c6f8c6e";
+        AllureLogger.logToAllure("Starting the test to get BOARD");
 
-        //Sending the GET request for a specific board id and receiving the response
-        AllureLogger.logToAllure("Getting the response for the Board Id");
+        AllureLogger.logToAllure("Sending the GET request for a BOARD and receiving the response");
         Response response = given().
                 spec(requestSpec).
-                pathParam("boardId", boardId).
+                pathParam("boardId", CreateBoardTest.newId).
                 queryParam("key", readConfigurationFile("key")).
                 queryParam("token", readConfigurationFile("token")).
                 when().
                 get("/{boardId}");
 
-        //Verify the response code
         AllureLogger.logToAllure("Asserting the response if the status code returned is 200");
         response.then().spec(responseSpec);
 
-        //To log the response to report
         logResponseAsString(response);
-
 
         //Using the POJO class
         AllureLogger.logToAllure("Asserting the response body");
 
         BoardResponse boardResponse = response.as(BoardResponse.class);
-        String name = "New-Test-Board";
-        String desc = "Board created from Postman";
+        String name = "Test-Board-Created-with-Java";
+        String desc = "Description from Java";
 
         Assert.assertEquals(boardResponse.getName(), name);
         Assert.assertEquals(boardResponse.getDesc(), desc);
-
     }
 }
