@@ -4,8 +4,6 @@ import org.example.utility.AllureLogger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.given;
-
 public class CreateBoardTest extends BaseTest{
 
     public static String newId = "";
@@ -19,14 +17,7 @@ public class CreateBoardTest extends BaseTest{
         boardDetails.setDesc("Description from Java");
 
         AllureLogger.logToAllure("Sending the POST request to create new BOARD");
-        Response response = given().
-                spec(requestSpec).
-                queryParam("key", readConfigurationFile("key")).
-                queryParam("token", readConfigurationFile("token")).
-                contentType("application/json").
-                body(boardDetails).log().body().
-                when().
-                post("/");
+        Response response = postRequest(boardDetails);
 
         AllureLogger.logToAllure("Asserting if the response's status code returned is 200");
         response.then().spec(responseSpec);

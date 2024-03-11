@@ -1,10 +1,7 @@
-
 import org.example.pojoClasses.BoardResponse;
 import org.example.utility.AllureLogger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import static io.restassured.RestAssured.given;
 
 import io.restassured.response.Response;
 
@@ -16,13 +13,7 @@ public class GetBoardTest extends BaseTest {
         AllureLogger.logToAllure("Starting the test to get BOARD");
 
         AllureLogger.logToAllure("Sending the GET request for a BOARD and receiving the response");
-        Response response = given().
-                spec(requestSpec).
-                pathParam("boardId", CreateBoardTest.newId).
-                queryParam("key", readConfigurationFile("key")).
-                queryParam("token", readConfigurationFile("token")).
-                when().
-                get("/{boardId}");
+        Response response = getRequest("/{boardId}", CreateBoardTest.newId);
 
         AllureLogger.logToAllure("Asserting the response if the status code returned is 200");
         response.then().spec(responseSpec);

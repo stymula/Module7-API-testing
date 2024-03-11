@@ -13,19 +13,12 @@ public class DeleteBoardTest extends BaseTest{
         //Create a new Board, this will be subsequently deleted
         CreateBoardTest newBoard = new CreateBoardTest();
         newBoard.create_board_with_name_and_description();
-        String IDtoUpdate = CreateBoardTest.newId;
-        AllureLogger.logToAllure("New Board ID created is : " +IDtoUpdate);
-        AllureLogger.logToAllure("Board ID to be deleted is : "+IDtoUpdate);
+        String IDtoDelete = CreateBoardTest.newId;
+        AllureLogger.logToAllure("New Board ID created is : " + IDtoDelete);
+        AllureLogger.logToAllure("Board ID to be deleted is : "+IDtoDelete);
 
         AllureLogger.logToAllure("Sending the DELETE request for specific ID and receiving the response");
-        Response response = given().
-                spec(requestSpec).
-                header("Content-Type", "application/json").
-                queryParam("key", readConfigurationFile("key")).
-                queryParam("token", readConfigurationFile("token")).
-                pathParam("boardId", IDtoUpdate).
-                when().
-                delete("/{boardId}");
+        Response response = deleteRequest(IDtoDelete);
 
         AllureLogger.logToAllure("Asserting the response if the status code returned is 201 as this is a Delete request");
         response.then().spec(responseSpec);
