@@ -74,23 +74,9 @@ public abstract class BaseTest extends FrameworkUtility {
 
     }
 
-//	@BeforeClass
-    public void beforeClass() {
-    }
-
-//	@AfterClass
-    public void afterClass(){
-
-    }
-
     @BeforeMethod
     public void beforeMethod() {
         responseSpec = new ResponseSpecBuilder().expectStatusCode(200).build();
-    }
-
-    //	@AfterMethod
-    public void afterMethod() {
-
     }
 
 }

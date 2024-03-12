@@ -7,7 +7,7 @@ import java.util.logging.LogManager;
 
 public class AllureLogger {
 
-   // private static final Logger logger = LogManager.getLogManager().getLogger();
+    //private static final Logger logger = LogManager.getLogManager().getLogger();
 
     private AllureLogger() {
         // hide default constructor for this util class

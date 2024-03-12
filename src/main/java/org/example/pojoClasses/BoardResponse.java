@@ -1,5 +1,4 @@
 package org.example.pojoClasses;
-
 import lombok.Getter;
 import lombok.Setter;
 
