@@ -10,18 +10,18 @@ public class GetBoardTest extends BaseTest {
     @Test(description="Get Trello Board")
     public void get_board_by_id() {
 
-        AllureLogger.logToAllure("Starting the test to get BOARD");
+        AllureLogger.info("Starting the test to get BOARD");
 
-        AllureLogger.logToAllure("Sending the GET request for a BOARD and receiving the response");
+        AllureLogger.info("Sending the GET request for a BOARD and receiving the response");
         Response response = getRequest("/{boardId}", CreateBoardTest.newId);
 
-        AllureLogger.logToAllure("Asserting the response if the status code returned is 200");
+        AllureLogger.info("Asserting the response if the status code returned is 200");
         response.then().spec(responseSpec);
 
         logResponseAsString(response);
 
         //Using the POJO class
-        AllureLogger.logToAllure("Asserting the response body");
+        AllureLogger.info("Asserting the response body");
 
         BoardResponse boardResponse = response.as(BoardResponse.class);
         String name = "Test-Board-Created-with-Java";

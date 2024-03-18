@@ -1,26 +1,24 @@
 package org.example.utility;
 
-import io.qameta.allure.Step;
-
-import java.util.logging.Logger;
-import java.util.logging.LogManager;
+import io.qameta.allure.Attachment;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AllureLogger {
+    private static final Logger logger = LogManager.getLogger(AllureLogger.class);
 
-    //private static final Logger logger = LogManager.getLogManager().getLogger();
-
-    private AllureLogger() {
-        // hide default constructor for this util class
+    public static void info(String message) {
+        logger.info(message);
+        attachLogToAllure("INFO: " + message);
     }
 
-    /**
-     * Uses the @Step annotation to log the given log message to Allure.
-     *
-     * @param message the message to log to the allure report
-     */
-    @Step("{0}")
-    public static void logToAllure(String message) {
-        //logger.debug("Logged to allure: " + message);
+    public static void error(String message) {
+        logger.error(message);
+        attachLogToAllure("ERROR: " + message);
     }
 
+    @Attachment(value = "{logMessage}", type = "text/plain")
+    private static String attachLogToAllure(String logMessage) {
+        return logMessage;
+    }
 }

@@ -68,7 +68,7 @@ public abstract class BaseTest extends FrameworkUtility {
     @BeforeSuite
     public void setBaseURI() {
 
-        AllureLogger.logToAllure("The base URI is : " + readConfigurationFile("Base_URI"));
+        AllureLogger.info("The base URI is : " + readConfigurationFile("Base_URI"));
         requestSpec = new RequestSpecBuilder().
                 setBaseUri(readConfigurationFile("Base_URI")).build();
 
