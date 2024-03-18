@@ -7,6 +7,10 @@
             <class name="GetBoardTest"/>
             <class name="UpdateBoardTest"/>
             <class name="DeleteBoardTest"/>
+            <class name="RetrofitCreateBoardTest"/>
+            <class name="RetrofitGetBoardTest"/>
+            <class name="RetrofitUpdateBoardTest"/>
+            <class name="RetrofitDeleteBoardTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
