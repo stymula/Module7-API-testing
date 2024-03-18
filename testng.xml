@@ -3,10 +3,14 @@
 <suite name="Suite">
     <test thread-count="5" name="Test">
         <classes>
-            <class name="CreateBoardTest"/>
-            <class name="GetBoardTest"/>
-            <class name="UpdateBoardTest"/>
-            <class name="DeleteBoardTest"/>
+<!--            <class name="CreateBoardTest"/>-->
+<!--            <class name="GetBoardTest"/>-->
+<!--            <class name="UpdateBoardTest"/>-->
+<!--            <class name="DeleteBoardTest"/>-->
+            <class name="HttpCreateBoardTest"/>
+            <class name="HttpGetBoardTest"/>
+            <class name="HttpUpdateBoardTest"/>
+            <class name="HttpDeleteBoardTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
