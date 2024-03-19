@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <test thread-count="5" name="Test">
+        <classes>
+            <class name="CreateBoardTest"/>
+            <class name="GetBoardTest"/>
+            <class name="UpdateBoardTest"/>
+            <class name="DeleteBoardTest"/>
+            <class name="RetrofitCreateBoardTest"/>
+            <class name="RetrofitGetBoardTest"/>
+            <class name="RetrofitUpdateBoardTest"/>
+            <class name="RetrofitDeleteBoardTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

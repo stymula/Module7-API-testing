@@ -1,5 +1,6 @@
 package org.example.pojoClasses;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,26 +8,27 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Prefs{
-    public String permissionLevel;
-    public boolean hideVotes;
-    public String voting;
-    public String comments;
-    public boolean selfJoin;
-    public boolean cardCovers;
-    public boolean isTemplate;
-    public String cardAging;
-    public boolean calendarFeedEnabled;
-    public String background;
-    public String backgroundImage;
-    public ArrayList<BackgroundImageScaled> backgroundImageScaled;
-    public boolean backgroundTile;
-    public String backgroundBrightness;
-    public String backgroundBottomColor;
-    public String backgroundTopColor;
-    public boolean canBePublic;
-    public boolean canBeEnterprise;
-    public boolean canBeOrg;
-    public boolean canBePrivate;
-    public boolean canInvite;
+    private String permissionLevel;
+    private boolean hideVotes;
+    private String voting;
+    private String comments;
+    private boolean selfJoin;
+    private boolean cardCovers;
+    private boolean isTemplate;
+    private String cardAging;
+    private boolean calendarFeedEnabled;
+    private String background;
+    private String backgroundImage;
+    private ArrayList<BackgroundImageScaled> backgroundImageScaled;
+    private boolean backgroundTile;
+    private String backgroundBrightness;
+    private String backgroundBottomColor;
+    private String backgroundTopColor;
+    private boolean canBePublic;
+    private boolean canBeEnterprise;
+    private boolean canBeOrg;
+    private boolean canBePrivate;
+    private boolean canInvite;
 }
