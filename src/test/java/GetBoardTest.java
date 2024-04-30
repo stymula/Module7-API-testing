@@ -1,35 +1,33 @@
 import org.example.pojoClasses.BoardResponse;
-import org.example.utility.BaseTest;
-import org.example.utility.ReadableResponse;
-import org.junit.jupiter.api.Test;
+import org.example.utility.AllureLogger;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertThat;
+import io.restassured.response.Response;
 
 public class GetBoardTest extends BaseTest {
 
-    @Test
-    public void it_should_get_character_by_id() {
+    @Test(description="Get Trello Board")
+    public void get_board_by_id() {
 
-        //Given: prepare requirements
-        String id = "";
+        AllureLogger.info("Starting the test to get BOARD");
 
-        //When: send request
-        ReadableResponse readableResponse = boardService.getBoard(id);
-        BoardResponse boardResponse = readableResponse.getResponse().as(BoardResponse.class);
+        AllureLogger.info("Sending the GET request for a BOARD and receiving the response");
+        Response response = getRequest("/{boardId}", CreateBoardTest.newId);
 
-        //Then: make assertions
-        assertThat(boardResponse.getStatusCode()).isEqualTo(200);
-//        assertThat(characterResponse.getId()).isEqualTo(2);
-//        assertThat(characterResponse.getName()).isEqualTo("Morty Smith");
-//        assertThat(characterResponse.getStatus()).isEqualTo(Status.Alive);
-//        assertThat(characterResponse.getSpecies()).isEqualTo("Human");
-//        assertThat(characterResponse.getGender()).isEqualTo(Gender.Male);
-//        assertThat(characterResponse.getOrigin().getName()).isEqualTo("unknown");
-//        assertThat(characterResponse.getLocation().getName()).isEqualTo("Citadel of Ricks");
-//        assertThat(characterResponse.getLocation().getUrl()).isEqualTo("https://rickandmortyapi.com/api/location/3");
-//        assertThat(characterResponse.getImage()).isEqualTo("https://rickandmortyapi.com/api/character/avatar/2.jpeg");
-//        assertThat(characterResponse.getUrl()).isEqualTo("https://rickandmortyapi.com/api/character/2");
-//        assertThat(characterResponse.getCreated()).isEqualTo("2017-11-04T18:50:21.651Z");
+        AllureLogger.info("Asserting the response if the status code returned is 200");
+        response.then().spec(responseSpec);
 
+        logResponseAsString(response);
+
+        //Using the POJO class
+        AllureLogger.info("Asserting the response body");
+
+        BoardResponse boardResponse = response.as(BoardResponse.class);
+        String name = "Test-Board-Created-with-Java";
+        String desc = "Description from Java";
+
+        Assert.assertEquals(boardResponse.getName(), name);
+        Assert.assertEquals(boardResponse.getDesc(), desc);
     }
 }
